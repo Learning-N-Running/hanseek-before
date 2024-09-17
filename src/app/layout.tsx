@@ -11,8 +11,8 @@ import Providers from "@/redux/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Vroombuddy",
-  description: "Safe Car Insurance",
+  title: "Hanseek",
+  description: "Korean food shorts Platform",
 };
 
 export default function RootLayout({

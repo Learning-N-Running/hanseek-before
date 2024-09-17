@@ -16,7 +16,7 @@ const Heading2 = styled.div`
 
 const Heading3 = styled.div`
   font-family: SFPro;
-  font-weight: 400; //Regular
+  font-weight: 600; //SemiBold
   font-size: 20px;
   line-height: auto;
 `;

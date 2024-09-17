@@ -1,36 +1,23 @@
 "use client";
-
-import Step_1_1 from "./Step_1_1";
-import Step_1_2 from "./Step_1_2";
-import Step_2_1 from "./Step_2_1";
-import Step_2_2 from "./Step_2_2";
-import Step_2_3 from "./Step_2_3";
-import Step_3 from "./Step_3";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { LongBlueButton } from "@/components/base/LongBlueButton";
+import { LongOrangeButton } from "@/components/base/LongOrangeButton";
 import { useRouter } from "next/navigation";
 import { signContract } from "@/lib/sign/sign-contract";
 // import { useGetSigner } from "@/lib/sign/useGetSigner";
 import Modal from "@/components/common/Modal";
+import colors from "@/styles/color";
 
 export default function Signup() {
-  const [step, setStep] = useState("1.1");
-  // const getSigner = useGetSigner();
   const router = useRouter();
+  const [isChecked, setIsChecked] = useState(false);
 
-  function goNext() {
-    if (step === "1.1") {
-      setStep("1.2");
-    } else if (step === "2.1") {
-      setStep("2.2");
-    } else if (step === "2.2") {
-      setStep("2.3");
-    } else if (step === "2.3") {
-      setStep("3");
-    }
-  }
+  // 체크박스 상태를 변경하는 함수
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked); // 체크 여부에 따라 상태 업데이트
+  };
 
+  // const getSigner = useGetSigner();
   /**
    * Sign Contract
    * 1. Sign on Metamask -> 2. Open Covered Modal
@@ -53,31 +40,30 @@ export default function Signup() {
   return (
     <>
       <Container>
-        {step === "1.1" && <Step_1_1 />}
-        {step === "1.2" && <Step_1_2 onClick={() => setStep("2.1")} />}
-        {step === "2.1" && <Step_2_1 />}
-        {step === "2.2" && <Step_2_2 />}
-        {step === "2.3" && <Step_2_3 />}
-        {step === "3" && <Step_3 />}
-        {step !== "1.2" && step !== "3" && (
-          <LongBlueButton onClick={() => goNext()}>Next</LongBlueButton>
-        )}
-        {step === "3" && (
-          <LongBlueButton onClick={onSignContract}>
-            I agree with all of it.
-          </LongBlueButton>
-        )}
-
-        <Modal onClose={onCloseModal} isOpen={isModalOpen}>
+        {/* <Modal onClose={onCloseModal} isOpen={isModalOpen}>
           <ModalContainer>
             <img width={136} src="/images/vb_you_covered.png" />
             <h1>{"You've Covered!"}</h1>
             <h3>Start your safe journey now.</h3>
-            <LongBlueButton onClick={onCloseModal}>
+            <LongOrangeButton onClick={onCloseModal}>
               Go to Homepage
-            </LongBlueButton>
+            </LongOrangeButton>
           </ModalContainer>
-        </Modal>
+        </Modal> */}
+        <FooterWrapper>
+          <CheckboxWrapper>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+              style={{ width: "24px", height: "24px", margin: "0 8px 0 2px" }}
+            />
+            <p>I agree with all</p>
+          </CheckboxWrapper>
+          <LongOrangeButton active={isChecked}>
+            Confirm and connect wallet
+          </LongOrangeButton>
+        </FooterWrapper>
       </Container>
     </>
   );
@@ -86,7 +72,6 @@ export default function Signup() {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 0px 24px 105px 24px; /* 아래쪽에 105px 패딩 추가 */
   overflow: auto; /* 부모 요소가 스크롤을 허용하도록 설정 */
 `;
 
@@ -105,4 +90,26 @@ const ModalContainer = styled.div`
     font-weight: 400;
     margin-bottom: 40px;
   }
+`;
+
+const CheckboxWrapper = styled.label`
+  font-family: SFPro;
+  font-weight: 400; //Regular
+  font-size: 17px;
+  line-height: auto;
+  color: ${colors.black};
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+`;
+
+const FooterWrapper = styled.div`
+  width: 100%;
+  padding: 0px 24px 24px 24px;
+  position: fixed;
+  z-index: 10;
+
+  bottom: 0px;
+  left: 0px;
 `;

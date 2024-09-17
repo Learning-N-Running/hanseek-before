@@ -78,6 +78,13 @@ const GlobalStyle = createGlobalStyle`
     src: url('/static/SF-Pro-Display-Regular.otf') format('opentype');
   }
 
+  @font-face {
+    font-family: 'SFPro';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/static/SF-Pro-Display-Semibold.otf') format('opentype');
+  }
+
 
 `;
 

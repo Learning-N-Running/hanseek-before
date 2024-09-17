@@ -27,12 +27,13 @@ function Header_Signup() {
   return (
     <Container_Signup>
       <Goback
-        src="/images/vb_goback.svg"
+        src="/images/hs_goback.svg"
         alt="go back"
         width={24}
         height={24}
+        isAbsolute={true}
       />
-      <Heading3>Insurance planning</Heading3>
+      <Heading3>Terms and use</Heading3>
     </Container_Signup>
   );
 }
@@ -81,7 +82,7 @@ const Container_Signup = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   background-color: white;
 `;
