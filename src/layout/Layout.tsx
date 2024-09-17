@@ -4,8 +4,8 @@ import { ReactNode, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Header from "./Header";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useSelector } from "react-redux";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
@@ -35,8 +35,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <EarthContainer>
-        {pathname !== "/" && <Header />}
-        <BodyContainer controlHeader={pathname}>{children}</BodyContainer>
+        {pathname !== "/" && pathname !== "/home" && <Header />}
+        <BodyContainer controlheader={pathname}>{children}</BodyContainer>
+        {pathname === "/home" && <Footer />}
       </EarthContainer>
     </>
   );
@@ -57,13 +58,11 @@ const EarthContainer = styled.div`
   overflow: auto;
 `;
 
-const BodyContainer = styled.div<{ controlHeader: string }>`
+const BodyContainer = styled.div<{ controlheader: string }>`
   width: 100%;
   height: 100%;
-  padding-top: ${({ controlHeader }) => controlHeader === "/signup" && "65px"};
-  padding-top: ${({ controlHeader }) =>
-    controlHeader.startsWith("/conversation") && "65px"};
-  padding-top: ${({ controlHeader }) => controlHeader === "/home" && "80px"};
+  padding-top: ${({ controlheader }) => controlheader === "/signup" && "65px"};
+  padding-bottom: ${({ controlheader }) => controlheader === "/home" && "72px"};
 `;
 
 export default Layout;
