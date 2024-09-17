@@ -6,7 +6,6 @@ import LoginButton from "@/components/common/LoginButton";
 import { Body2Regular, Heading1, Heading2, Heading3 } from "@/styles/texts";
 import { useRouter } from "next/navigation";
 import colors from "@/styles/color";
-import { LongOrangeButton } from "@/components/base/BaseButton";
 
 export default function HomeBeforeLogin() {
   const router = useRouter();
