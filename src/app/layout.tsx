@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "@/layout/Layout";
 import GlobalStyle from "@/styles/global";
 import Providers from "@/redux/provider";
+import "next-cloudinary/dist/cld-video-player.css";
 
 // // Register the "en" locale.
 // TimeAgo.addDefaultLocale(en);

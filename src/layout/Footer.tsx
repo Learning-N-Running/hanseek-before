@@ -38,6 +38,7 @@ const Container = styled.div`
   position: fixed;
   left: 0px;
   bottom: 0px;
+  z-index: 100;
 
   background-color: ${colors.black};
   display: flex;
