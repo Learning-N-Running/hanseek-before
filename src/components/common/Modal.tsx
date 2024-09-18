@@ -1,3 +1,5 @@
+"use client";
+
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
@@ -60,7 +62,10 @@ export default function Modal({
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
-      <ModalContainer className={className} onClick={(e) => e.stopPropagation()}>
+      <ModalContainer
+        className={className}
+        onClick={(e) => e.stopPropagation()}
+      >
         {!noHeader && (
           <Header>
             <Title>{title}</Title>
