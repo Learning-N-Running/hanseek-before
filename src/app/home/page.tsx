@@ -1,19 +1,16 @@
 "use client";
 
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { getIsLoggedInState } from "@/redux/slice/authSlice";
-import Image from "next/image";
-import { Heading1 } from "@/styles/texts";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import HomeSearchBar from "@/components/common/HomeSearchBar";
+import Video from "next-video";
+import testVid from "/videos/hs_test1.mp4";
 
 export default function Home() {
   return (
     <>
       <Container>
         <HomeSearchBar />
+        <Video src={testVid} style={{ height: "100%" }} />
       </Container>
     </>
   );

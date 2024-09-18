@@ -95,7 +95,7 @@ export default function HomeSearchBar() {
 }
 
 const SearchContainer = styled.div`
-  position: relative;
+  position: absolute;
   width: 100%;
   z-index: 10;
 

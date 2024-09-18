@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const { withNextVideo } = require("next-video/process");
 const nextConfig = {
   compiler: {
     // ssr and displayName are configured by default
@@ -35,4 +36,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextVideo(nextConfig);

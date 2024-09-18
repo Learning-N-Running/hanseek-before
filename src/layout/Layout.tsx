@@ -31,6 +31,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   if (!isClient) {
     return null;
   }
+  console.log(pathname);
 
   return (
     <>
