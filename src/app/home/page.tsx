@@ -8,12 +8,27 @@ import { Heading1 } from "@/styles/texts";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import HomeSearchBar from "@/components/common/HomeSearchBar";
+import CldVideoPlayer from "@/components/CldVideoPlayer";
 
 export default function Home() {
   return (
     <>
       <Container>
         <HomeSearchBar />
+        <CldVideoPlayer
+          width="768"
+          height="1024"
+          src="IMG_4173_vauw4c"
+          logo={{
+            imageUrl: "/images/hs_favicon.png",
+          }}
+          autoplay
+          //여기는 잘 모르겠음
+          sourceTypes={["hls"]}
+          transformation={{
+            streaming_profile: "hd",
+          }}
+        />
       </Container>
     </>
   );
@@ -22,6 +37,8 @@ export default function Home() {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 24px 24px 0 24px;
-  background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

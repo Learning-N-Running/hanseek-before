@@ -43,22 +43,6 @@ export default function HomeSearchBar() {
     }
   };
   return (
-    // <SearchContainer>
-    //   <Image
-    //     src="/images/hs_search.svg"
-    //     alt="search"
-    //     width={16}
-    //     height={16}
-    //     style={{ position: "absolute", left: "24px", zIndex: "11" }}
-    //   />
-    //   <SearchInput
-    //     type="text"
-    //     placeholder="Search for restaurants or locations"
-    //     value={query}
-    //     onChange={(e) => setQuery(e.target.value)}
-    //     onKeyDown={handleKeyDown}
-    //   />
-    // </SearchContainer>
     <SearchContainer>
       <Image
         src="/images/hs_search.svg"
@@ -95,9 +79,11 @@ export default function HomeSearchBar() {
 }
 
 const SearchContainer = styled.div`
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: 720px;
   z-index: 10;
+
+  margin-top: 24px;
 
   display: flex;
   align-items: center;
@@ -125,7 +111,7 @@ const ResultsContainer = styled.div`
   position: absolute;
   top: 50px; /* 검색창 아래에 위치하도록 설정 */
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 210px;
@@ -139,7 +125,8 @@ const ResultItem = styled.div`
   align-items: center;
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.7);
+  /* color: rgba(255, 255, 255, 0.7); */
+  color: rgba(0, 0, 0, 0.7);
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.5);
