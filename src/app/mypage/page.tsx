@@ -32,6 +32,7 @@ export default function Home() {
         />
       </nav>
       <Profile title="Stella.leeee" />
+
       <MyPageTab activeTab={activeTab} setActiveTab={setActiveTab} />
       <WithdrawBar />
       <Footer />

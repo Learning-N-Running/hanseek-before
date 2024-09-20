@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["SFPro"], // SF Pro를 sans로 정의
+      },
+    },
   },
   plugins: [],
 };

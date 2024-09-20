@@ -2,7 +2,7 @@
 import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     body {
-    font-family: 'Pretendard'
+    font-family: 'SFPro'
     }
 
     // Pretendard
@@ -81,8 +81,22 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'SFPro';
     font-style: normal;
+    font-weight: 500;
+    src: url('/static/SF-Pro-Display-Medium.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'SFPro';
+    font-style: normal;
     font-weight: 600;
     src: url('/static/SF-Pro-Display-Semibold.otf') format('opentype');
+  }
+
+  @font-face {
+    font-family: 'SFPro';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/static/SF-Pro-Display-Bold.otf') format('opentype');
   }
 
 

@@ -10,6 +10,37 @@ interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  buttonText: string;
+  buttonOnClick: () => void;
+}
+
+export default function SlideUpModal({
+  isOpen,
+  onClose,
+  children,
+  buttonText,
+  buttonOnClick,
+}: ModalProps) {
+  if (!isOpen) return null;
+
+  return ReactDOM.createPortal(
+    <Overlay onClick={onClose}>
+      <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <CloseButton
+          src="\images\hs_close.svg"
+          alt="close"
+          width={68}
+          height={68}
+          onClick={onClose}
+        />
+        {children}
+        <LongOrangeButton active={true} onClick={() => buttonOnClick()}>
+          {buttonText}
+        </LongOrangeButton>
+      </ModalContainer>
+    </Overlay>,
+    document.body
+  );
 }
 
 const slideUp = keyframes`
@@ -51,35 +82,7 @@ const Header = styled.div`
 
 const CloseButton = styled(Image)`
   cursor: pointer;
-  position: absoulte;
+  position: absolute;
   top: 8px;
-  left: 0px;
+  right: 0px;
 `;
-
-export default function SlideUpModal({
-  isOpen,
-  onClose,
-  children,
-}: ModalProps) {
-  if (!isOpen) return null;
-
-  return ReactDOM.createPortal(
-    <Overlay onClick={onClose}>
-      <ModalContainer onClick={(e) => e.stopPropagation()}>
-        <Header>
-          <h3>Reserve</h3>
-          <CloseButton
-            src="\images\hs_close.svg"
-            alt="close"
-            width={68}
-            height={68}
-            onClick={onClose}
-          />
-        </Header>
-        {children}
-        <LongOrangeButton onClick={onClose}>Reserve now</LongOrangeButton>
-      </ModalContainer>
-    </Overlay>,
-    document.body
-  );
-}

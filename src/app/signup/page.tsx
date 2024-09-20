@@ -7,15 +7,11 @@ import { signContract } from "@/lib/sign/sign-contract";
 // import { useGetSigner } from "@/lib/sign/useGetSigner";
 import Modal from "@/components/common/Modal";
 import colors from "@/styles/color";
+import Image from "next/image";
 
 export default function Signup() {
   const router = useRouter();
-  const [isChecked, setIsChecked] = useState(false);
-
-  // 체크박스 상태를 변경하는 함수
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked); // 체크 여부에 따라 상태 업데이트
-  };
+  const [isClicked, setIsClicked] = useState(false);
 
   // const getSigner = useGetSigner();
   /**
@@ -50,18 +46,44 @@ export default function Signup() {
             </LongOrangeButton>
           </ModalContainer>
         </Modal> */}
+        <div style={{ fontSize: "28px", fontWeight: "700" }}>
+          Set your profile
+        </div>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "24px",
+          }}
+        >
+          <Image
+            src={
+              isClicked
+                ? "/images/hs_profile_stella.svg"
+                : "/images/hs_profile_set.svg"
+            }
+            alt="profile set"
+            width={116}
+            height={116}
+            style={{ cursor: "pointer" }}
+            onClick={() => setIsClicked(!isClicked)}
+          />
+        </div>
+        <div
+          style={{
+            fontWeight: "500",
+            fontSize: "12px",
+            color: `${colors.grey6}`,
+            margin: "24px 0 4px 0",
+          }}
+        >
+          NickName
+        </div>
+        <NicknameInput type="text" placeholder="Enter your Nickname" />
         <FooterWrapper>
-          <CheckboxWrapper>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckboxChange}
-              style={{ width: "24px", height: "24px", margin: "0 8px 0 2px" }}
-            />
-            <p>I agree with all</p>
-          </CheckboxWrapper>
-          <LongOrangeButton active={isChecked}>
-            Confirm and connect wallet
+          <LongOrangeButton active={true} onClick={() => router.push("/home")}>
+            Save
           </LongOrangeButton>
         </FooterWrapper>
       </Container>
@@ -73,6 +95,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto; /* 부모 요소가 스크롤을 허용하도록 설정 */
+  padding: 24px 24px 0px 24px;
 `;
 
 const ModalContainer = styled.div`
@@ -92,16 +115,16 @@ const ModalContainer = styled.div`
   }
 `;
 
-const CheckboxWrapper = styled.label`
-  font-family: SFPro;
-  font-weight: 400; //Regular
-  font-size: 17px;
-  line-height: auto;
-  color: ${colors.black};
+const NicknameInput = styled.input`
+  width: 100%;
+  height: 52px;
+  padding: 0px 17px;
 
-  display: flex;
-  align-items: center;
-  margin-bottom: 32px;
+  border: 1px solid ${colors.grey2};
+
+  font-size: 17px;
+  font-weight: 400;
+  color: ${colors.grey6};
 `;
 
 const FooterWrapper = styled.div`

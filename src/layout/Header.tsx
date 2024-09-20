@@ -14,16 +14,15 @@ const Header = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   return (
     <>
-      {pathname === "/signup" && <Header_Signup />}
-      {pathname === "/home" && <Header_Home />}
-      {pathname.startsWith("/conversation") && <Header_Conversation />}
+      {pathname === "/signup" && <Header_Title title="Sign up" />}
+      {pathname === "/terms" && <Header_Title title="Terms and use" />}
     </>
   );
 };
 
 export default Header;
 
-function Header_Signup() {
+function Header_Title({ title }: { title: string }) {
   return (
     <Container_Signup>
       <Goback
@@ -33,7 +32,7 @@ function Header_Signup() {
         height={24}
         isAbsolute={true}
       />
-      <Heading3>Terms and use</Heading3>
+      <Heading3>{title}</Heading3>
     </Container_Signup>
   );
 }

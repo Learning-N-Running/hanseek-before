@@ -8,8 +8,8 @@ const Heading1 = styled.div`
 `;
 
 const Heading2 = styled.div`
-  font-family: Pretendard;
-  font-weight: 500; //Medium
+  font-family: SFPro;
+  font-weight: 600; //Medium
   font-size: 24px;
   line-height: auto;
 `;
@@ -28,8 +28,15 @@ const Body1Regular = styled.div`
   line-height: auto;
 `;
 
+const Body1Medium = styled.div`
+  font-family: SFPro;
+  font-weight: 500; //Regular
+  font-size: 15px;
+  line-height: auto;
+`;
+
 const Body2Semibold = styled.div`
-  font-family: Pretendard;
+  font-family: SFPro;
   font-weight: 600; //Semibold
   font-size: 17px;
   line-height: auto;
@@ -47,6 +54,7 @@ export {
   Heading2,
   Heading3,
   Body1Regular,
+  Body1Medium,
   Body2Semibold,
   Body2Regular,
 };
