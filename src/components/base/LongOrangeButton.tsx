@@ -1,9 +1,13 @@
 import colors from "@/styles/color";
 import { styled } from "styled-components";
 
-export const LongOrangeButton = styled.button<{ active?: boolean }>`
+export const LongOrangeButton = styled.button<{
+  active?: boolean;
+  fullHeight?: boolean;
+}>`
   width: 100%;
   height: 64px;
+  height: ${(props) => props.fullHeight && "100%"};
 
   background-color: ${(props) =>
     props.active ? `${colors.primary}` : `${colors.grey2}`};

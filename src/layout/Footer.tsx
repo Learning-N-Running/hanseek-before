@@ -5,14 +5,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 interface ContainerProps {
-  backgroundColor: string;
+  backgroundcolor: string;
 }
 
 export default function Footer() {
   const path = usePathname();
 
   const isMyPage = path === "/mypage";
-  const backgroundColor = isMyPage ? colors.white : colors.black;
+  const backgroundcolor = isMyPage ? colors.white : colors.black;
 
   const homeImageSrc = isMyPage
     ? "/images/hs_foot_home_black.svg"
@@ -23,7 +23,7 @@ export default function Footer() {
     : "/images/hs_foot_mypage_white.svg";
 
   return (
-    <Container backgroundColor={backgroundColor}>
+    <Container backgroundcolor={backgroundcolor}>
       <Link href="/home">
         <Image
           src={homeImageSrc}
@@ -65,7 +65,7 @@ const Container = styled.div<ContainerProps>`
   bottom: 0px;
   z-index: 100;
 
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -43,7 +43,14 @@ export default function Home() {
         </button>
       </Container>
 
-      <SlideUpModal isOpen={isModalOpen} onClose={handleCloseModal}>
+      <SlideUpModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        buttonText={"sdfasdfsd"}
+        buttonOnClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      >
         <p>Choose Your Date</p>
         <p>add location</p>
       </SlideUpModal>

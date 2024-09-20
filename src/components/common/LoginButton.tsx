@@ -32,7 +32,7 @@ const LoginButton = () => {
     //     profileImage: userInfo.profileImage!,
     //   })
     // );
-    router.push("/signup");
+    router.push("/terms");
   };
 
   return <LoginBaseButton onClick={onLogin}>Connect Wallet</LoginBaseButton>;
