@@ -12,6 +12,7 @@ interface ModalProps {
   className?: string;
   buttonText: string;
   buttonOnClick: () => void;
+  buttonActive?: boolean;
 }
 
 export default function SlideUpModal({
@@ -20,6 +21,7 @@ export default function SlideUpModal({
   children,
   buttonText,
   buttonOnClick,
+  buttonActive,
 }: ModalProps) {
   if (!isOpen) return null;
 
@@ -34,7 +36,10 @@ export default function SlideUpModal({
           onClick={onClose}
         />
         {children}
-        <LongOrangeButton active={true} onClick={() => buttonOnClick()}>
+        <LongOrangeButton
+          active={buttonActive !== undefined ? buttonActive : true}
+          onClick={() => buttonOnClick()}
+        >
           {buttonText}
         </LongOrangeButton>
       </ModalContainer>

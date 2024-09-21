@@ -83,7 +83,7 @@ export default function Signup() {
         <NicknameInput type="text" placeholder="Enter your Nickname" />
         <FooterWrapper>
           <LongOrangeButton active={true} onClick={() => router.push("/home")}>
-            Save
+            Save and start Hanseek
           </LongOrangeButton>
         </FooterWrapper>
       </Container>

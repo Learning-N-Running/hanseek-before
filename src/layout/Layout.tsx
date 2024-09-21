@@ -63,6 +63,7 @@ const BodyContainer = styled.div<{ controlheader: string }>`
   height: 100%;
   padding-top: ${({ controlheader }) => controlheader === "/signup" && "65px"};
   padding-top: ${({ controlheader }) => controlheader === "/terms" && "65px"};
+  padding-top: ${({ controlheader }) => controlheader === "/creator" && "65px"};
   padding-bottom: ${({ controlheader }) => controlheader === "/home" && "72px"};
 `;
 
