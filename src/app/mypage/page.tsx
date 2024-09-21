@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Footer from "@/layout/Footer";
 import Image from "next/image";
 import MyPageTab from "@/components/common/MypageTab";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface MyProfile {
   title: string;
@@ -12,11 +12,21 @@ interface MyProfile {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Videos");
+  const [count, setCount] = useState(0);
 
   return (
     <div className="bg-white">
       <nav className="flex items-center p-6 space-x-4 justify-end">
         <Image
+          onClick={() => {
+            const storedCoins = localStorage.getItem("totalCoins");
+            const currentCoins = storedCoins ? parseFloat(storedCoins) : 99.0;
+            const newCoinsValue = (currentCoins + 0.02).toFixed(2);
+
+            localStorage.setItem("totalCoins", newCoinsValue);
+
+            window.location.reload();
+          }}
           className=""
           src="\images\bell_icon.svg"
           alt="bell icon"
@@ -87,6 +97,22 @@ const Profile = ({ title }: MyProfile) => {
 };
 
 const WithdrawBar = () => {
+  const [coins, setCoins] = useState<number>(99.0);
+
+  useEffect(() => {
+    const storedCoins = localStorage.getItem("totalCoins");
+    if (storedCoins) {
+      setCoins(parseFloat(storedCoins));
+    }
+
+    const newCoinsValue = (parseFloat(storedCoins || "99.00") + 0.01).toFixed(
+      2
+    );
+    setCoins(parseFloat(newCoinsValue));
+
+    localStorage.setItem("totalCoins", newCoinsValue);
+  }, []);
+
   return (
     <div className="w-[688px] h-[68px] fixed bottom-32 left-11 z-50 flex justify-center">
       <div className="flex flex-row items-center bg-[#FAFAFB] p-6 justify-between w-full max-w-4xl">
@@ -94,12 +120,12 @@ const WithdrawBar = () => {
           Total coins accumulated:{" "}
           <Image
             className="ml-2"
-            src="images\usdc-icon.svg"
+            src="images/usdc-icon.svg"
             alt="usdc"
             width={20}
             height={20}
           />{" "}
-          <b>120.00</b>
+          <b>{coins.toFixed(2)}</b>
         </p>
         <button className="text-xl justify-end bg-[#FF5924] px-6 py-3 text-white rounded-3xl mr-4 hover:bg-orange-500">
           Withdraw

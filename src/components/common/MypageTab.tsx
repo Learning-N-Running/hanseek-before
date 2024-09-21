@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
-import Image from "next/image";
+import React, { Dispatch, SetStateAction, useRef, useState } from "react";
+import VideoContent from "./VideoContent";
 
 export default function MyPageTab({
   activeTab,
@@ -24,6 +24,11 @@ export default function MyPageTab({
       activeIcon: "/images/clicked_heart_icon.svg",
     },
     {
+      name: "History",
+      icon: "/images/heart_icon.svg",
+      activeIcon: "/images/clicked_heart_icon.svg",
+    },
+    {
       name: "Collection",
       icon: "/images/save_icon.svg",
       activeIcon: "/images/clciked_save_icon.svg",
@@ -36,9 +41,9 @@ export default function MyPageTab({
         {tabs.map((tab) => (
           <div key={tab.name} className="flex flex-col px-15 w-full">
             <div className="flex flex-row items-center justify-center">
-              <Image
+              <img
                 className="mr-2"
-                src={`${activeTab === tab.name ? tab.activeIcon : tab.icon}`}
+                src={activeTab === tab.name ? tab.activeIcon : tab.icon}
                 alt={`${tab.name}_icon`}
                 width={24}
                 height={24}
@@ -60,39 +65,12 @@ export default function MyPageTab({
       <div className="mt-4">
         {activeTab === "Videos" && <VideoContent />}
         {activeTab === "Likes" && <LikesContent />}
+        {activeTab === "History" && <CollectionContent />}
         {activeTab === "Collection" && <CollectionContent />}
       </div>
     </>
   );
 }
-
-const VideoContent = () => {
-  return (
-    <div className="flex flex-row justify-center p-4 place-content-evenly">
-      <Image
-        className="m-2"
-        src="/images/restaurant_image1.png"
-        alt="reastaurant1"
-        width={235}
-        height={299}
-      />
-      <Image
-        className="m-2"
-        src="/images/restaurant_image2.png"
-        alt="reastaurant2"
-        width={235}
-        height={299}
-      />
-      <Image
-        className="m-2"
-        src="/images/restaurant_image3.png"
-        alt="reastaurant3"
-        width={235}
-        height={299}
-      />
-    </div>
-  );
-};
 
 const LikesContent = () => {
   return (
