@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
-import Image from "next/image";
+import React, { Dispatch, SetStateAction, useRef, useState } from "react";
+import VideoContent from "./VideoContent";
 
 export default function MyPageTab({
   activeTab,
@@ -24,21 +24,32 @@ export default function MyPageTab({
       activeIcon: "/images/clicked_heart_icon.svg",
     },
     {
-      name: "Collection",
-      icon: "/images/save_icon.svg",
-      activeIcon: "/images/clciked_save_icon.svg",
+      name: "History",
+      icon: "/images/history_icon.svg",
+      activeIcon: "/images/clicked_history_icon.svg",
+    },
+    {
+      name: "Badge",
+      icon: "/images/badge_icon.svg",
+      activeIcon: "/images/clicked_badge_icon.svg",
     },
   ];
 
   return (
     <>
-      <div className="flex flex-row justify-center gap-12 mt-6">
-        {tabs.map((tab) => (
-          <div key={tab.name} className="flex flex-col px-15 w-full">
+      <div className="flex flex-row justify-center mt-6">
+        {tabs.map((tab, index) => (
+          <div
+            key={tab.name}
+            className={`flex flex-col w-60 ${index === 0 ? "ml-4" : ""} ${
+              index === tabs.length - 1 ? "mr-4" : ""
+            }`}
+          >
+            {" "}
             <div className="flex flex-row items-center justify-center">
-              <Image
+              <img
                 className="mr-2"
-                src={`${activeTab === tab.name ? tab.activeIcon : tab.icon}`}
+                src={activeTab === tab.name ? tab.activeIcon : tab.icon}
                 alt={`${tab.name}_icon`}
                 width={24}
                 height={24}
@@ -60,39 +71,12 @@ export default function MyPageTab({
       <div className="mt-4">
         {activeTab === "Videos" && <VideoContent />}
         {activeTab === "Likes" && <LikesContent />}
-        {activeTab === "Collection" && <CollectionContent />}
+        {activeTab === "History" && <HistoryContent />}
+        {activeTab === "Badge" && <BadgeContent />}
       </div>
     </>
   );
 }
-
-const VideoContent = () => {
-  return (
-    <div className="flex flex-row justify-center p-4 place-content-evenly">
-      <Image
-        className="m-2"
-        src="/images/restaurant_image1.png"
-        alt="reastaurant1"
-        width={235}
-        height={299}
-      />
-      <Image
-        className="m-2"
-        src="/images/restaurant_image2.png"
-        alt="reastaurant2"
-        width={235}
-        height={299}
-      />
-      <Image
-        className="m-2"
-        src="/images/restaurant_image3.png"
-        alt="reastaurant3"
-        width={235}
-        height={299}
-      />
-    </div>
-  );
-};
 
 const LikesContent = () => {
   return (
@@ -100,6 +84,10 @@ const LikesContent = () => {
   );
 };
 
-const CollectionContent = () => {
+const HistoryContent = () => {
+  return <div></div>;
+};
+
+const BadgeContent = () => {
   return <div></div>;
 };
