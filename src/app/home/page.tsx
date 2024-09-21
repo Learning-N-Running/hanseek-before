@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getIsLoggedInState } from "@/redux/slice/authSlice";
 import Image from "next/image";
 import { Heading1, Heading2 } from "@/styles/texts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import HomeSearchBar from "@/components/common/HomeSearchBar";
 import CldVideoPlayer from "@/components/CldVideoPlayer";
@@ -24,6 +24,33 @@ export default function Home() {
   const [isPersonClicked, setIsPersonClicked] = useState(false);
   const [isTimeClicked, setIsTimeClicked] = useState(false);
 
+  const [coins, setCoins] = useState<number>(99.0);
+  const [views, setViews] = useState<number>(0);
+
+  useEffect(() => {
+    const storedCoins = localStorage.getItem("totalCoins");
+    const storedViews = localStorage.getItem("totalViews");
+
+    if (storedCoins) {
+      setCoins(parseFloat(storedCoins));
+    }
+    if (storedViews) {
+      setViews(parseInt(storedViews, 10));
+    }
+
+    if (views > 0) {
+      const newCoinsValue = (coins + 0.0001).toFixed(5);
+      setCoins(parseFloat(newCoinsValue));
+      localStorage.setItem("totalCoins", newCoinsValue);
+    }
+
+    localStorage.setItem("totalViews", views.toString());
+  }, [views, coins]);
+
+  const handleVideoPlay = () => {
+    setViews((prevViews) => prevViews + 1);
+  };
+
   return (
     <>
       <Container>
@@ -35,27 +62,15 @@ export default function Home() {
           logo={{
             imageUrl: "/images/hs_favicon.png",
           }}
-          autoplay
-          //여기는 잘 모르겠음
+          autoplay={false}
           sourceTypes={["hls"]}
           transformation={{
             streaming_profile: "hd",
           }}
+          onPlay={handleVideoPlay}
         />
         <InteractionButtons />
         <InfoTab handleOpenSlideUpModal={() => setIsSlideUpModalOpen(true)} />
-        {/* <Image
-          src="/images/hs_updown.png" //변경해야함.
-          alt="up down"
-          width={80}
-          height={136}
-          style={{
-            position: "absolute",
-            bottom: "100px",
-            right: "4px",
-            cursor: "pointer",
-          }}
-        /> */}
       </Container>
       <SlideUpModal
         isOpen={isSlideUpModalOpen}

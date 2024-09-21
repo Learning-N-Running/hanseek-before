@@ -25,21 +25,27 @@ export default function MyPageTab({
     },
     {
       name: "History",
-      icon: "/images/heart_icon.svg",
-      activeIcon: "/images/clicked_heart_icon.svg",
+      icon: "/images/history_icon.svg",
+      activeIcon: "/images/clicked_history_icon.svg",
     },
     {
-      name: "Collection",
-      icon: "/images/save_icon.svg",
-      activeIcon: "/images/clciked_save_icon.svg",
+      name: "Badge",
+      icon: "/images/badge_icon.svg",
+      activeIcon: "/images/clicked_badge_icon.svg",
     },
   ];
 
   return (
     <>
-      <div className="flex flex-row justify-center gap-12 mt-6">
-        {tabs.map((tab) => (
-          <div key={tab.name} className="flex flex-col px-15 w-full">
+      <div className="flex flex-row justify-center mt-6">
+        {tabs.map((tab, index) => (
+          <div
+            key={tab.name}
+            className={`flex flex-col w-60 ${index === 0 ? "ml-4" : ""} ${
+              index === tabs.length - 1 ? "mr-4" : ""
+            }`}
+          >
+            {" "}
             <div className="flex flex-row items-center justify-center">
               <img
                 className="mr-2"
@@ -65,8 +71,8 @@ export default function MyPageTab({
       <div className="mt-4">
         {activeTab === "Videos" && <VideoContent />}
         {activeTab === "Likes" && <LikesContent />}
-        {activeTab === "History" && <CollectionContent />}
-        {activeTab === "Collection" && <CollectionContent />}
+        {activeTab === "History" && <HistoryContent />}
+        {activeTab === "Badge" && <BadgeContent />}
       </div>
     </>
   );
@@ -78,6 +84,10 @@ const LikesContent = () => {
   );
 };
 
-const CollectionContent = () => {
+const HistoryContent = () => {
+  return <div></div>;
+};
+
+const BadgeContent = () => {
   return <div></div>;
 };
