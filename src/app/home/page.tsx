@@ -24,6 +24,8 @@ export default function Home() {
   const [isPersonClicked, setIsPersonClicked] = useState(false);
   const [isTimeClicked, setIsTimeClicked] = useState(false);
 
+  const router = useRouter();
+
   return (
     <>
       <Container>
@@ -44,8 +46,8 @@ export default function Home() {
         />
         <InteractionButtons />
         <InfoTab handleOpenSlideUpModal={() => setIsSlideUpModalOpen(true)} />
-        {/* <Image
-          src="/images/hs_updown.png" //변경해야함.
+        <Image
+          src="/images/hs_updown.png"
           alt="up down"
           width={80}
           height={136}
@@ -55,7 +57,7 @@ export default function Home() {
             right: "4px",
             cursor: "pointer",
           }}
-        /> */}
+        />
       </Container>
       <SlideUpModal
         isOpen={isSlideUpModalOpen}
@@ -101,6 +103,7 @@ export default function Home() {
           onClick={() => setIsTimeClicked(!isTimeClicked)}
         />
       </SlideUpModal>
+
       <Modal
         onClose={() => setIsDepositPopUpModalOpen(false)}
         isOpen={isDepositPopUpModalOpen}
@@ -121,17 +124,19 @@ export default function Home() {
       <Modal
         onClose={() => setIsCompletePopUpModalOpen(false)}
         isOpen={isCompletePopUpModalOpen}
-        description="A percentage of the revenue goes to the creator./Become a creator today!"
-        buttonText={"Film a video and be a creator!"}
-        buttonOnClick={() => {}}
+        description="메롱메롱" //수정 필요
+        buttonText={"Confirm my reservation"}
+        buttonOnClick={() => {
+          router.push("/mypage");
+        }}
         title="The payment is complete!"
       >
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <Image
-            src="/images/hs_complete.svg"
-            alt="complete"
+            src="/images/hs_payment_complete.svg"
+            alt="payment complete"
             width={136}
             height={147}
             style={{ marginBottom: "16px" }}

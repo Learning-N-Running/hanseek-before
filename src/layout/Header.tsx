@@ -16,6 +16,7 @@ const Header = () => {
     <>
       {pathname === "/signup" && <Header_Title title="Sign up" />}
       {pathname === "/terms" && <Header_Title title="Terms and use" />}
+      {pathname === "/creator" && <Header_Title title="Upload" />}
     </>
   );
 };
@@ -24,7 +25,7 @@ export default Header;
 
 function Header_Title({ title }: { title: string }) {
   return (
-    <Container_Signup>
+    <Container_Header_Title>
       <Goback
         src="/images/hs_goback.svg"
         alt="go back"
@@ -33,45 +34,36 @@ function Header_Title({ title }: { title: string }) {
         isAbsolute={true}
       />
       <Heading3>{title}</Heading3>
-    </Container_Signup>
+    </Container_Header_Title>
   );
 }
 
-function Header_Conversation() {
+function Header_Title_Next({ title }: { title: string }) {
   return (
-    <Container_Conversation>
+    <Container_Header_Title_Next>
       <Goback
-        src="/images/vb_goback.svg"
+        src="/images/hs_goback.svg"
         alt="go back"
         width={24}
         height={24}
-        isAbsolute={true}
+        isAbsolute={false}
       />
-      <Heading3>Accident Report</Heading3>
-    </Container_Conversation>
+      <Heading3>{title}</Heading3>
+      <div
+        style={{
+          fontFamily: "SFPro",
+          fontSize: "16px",
+          fontWeight: "400",
+          cursor: "pointer",
+        }}
+      >
+        Next
+      </div>
+    </Container_Header_Title_Next>
   );
 }
 
-function Header_Home() {
-  return (
-    <Container_Home>
-      <Image
-        src="/images/vb_home_목록.svg"
-        alt="category"
-        width={32}
-        height={32}
-      />
-      <Image
-        src="/images/vb_home_알림.png"
-        alt="notification"
-        width={48}
-        height={48}
-      />
-    </Container_Home>
-  );
-}
-
-const Container_Signup = styled.div`
+const Container_Header_Title = styled.div`
   width: 100%;
   height: 65px;
 
@@ -82,6 +74,21 @@ const Container_Signup = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-color: white;
+`;
+
+const Container_Header_Title_Next = styled.div`
+  width: 100%;
+  height: 65px;
+
+  position: fixed;
+  z-index: 10;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   background-color: white;
 `;

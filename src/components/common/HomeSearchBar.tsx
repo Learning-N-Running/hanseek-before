@@ -45,7 +45,7 @@ export default function HomeSearchBar() {
   return (
     <SearchContainer>
       <Image
-        src="/images/hs_search.svg"
+        src="/images/hs_search_white.svg"
         alt="search"
         width={16}
         height={16}
@@ -63,7 +63,7 @@ export default function HomeSearchBar() {
           {results.map((result, index) => (
             <ResultItem key={index}>
               <Image
-                src="/images/hs_search.svg"
+                src="/images/hs_search_white.svg"
                 alt="search"
                 width={16}
                 height={16}
